@@ -61,7 +61,7 @@ Start directly in the system tray:
 
 Fedora RPM packaging files are in `packaging/`.
 
-See `packaging/README.md` for the full local RPM build workflow. The spec targets Fedora 44 without strict dependency version pins, so normal Fedora package upgrades are not blocked.
+See `packaging/README.md` for the full local RPM build workflow. The spec avoids strict dependency version pins; broad Fedora compatibility should be handled by rebuilding the same SRPM for each target Fedora release with `mock`, COPR, or OBS.
 
 ## Usage
 

@@ -2,7 +2,7 @@
 
 This directory contains a Fedora-oriented RPM spec for EasySpot Linux Client.
 
-The package is intended for Fedora 44 and follows the current project layout:
+The spec follows the current project layout:
 
 - Qt 6 Widgets application built with CMake.
 - BLE through BlueZ DBus.
@@ -22,6 +22,10 @@ Explicit runtime dependencies are limited to services the app directly needs:
 `kwallet` is a weak dependency through `Recommends` because any Freedesktop Secret Service provider can satisfy password storage at runtime.
 
 Qt runtime library dependencies are expected to be generated automatically by RPM from the linked binary.
+
+That automatic dependency generation is also why one binary RPM is not a good compatibility target for multiple Fedora releases. A Qt/C++ RPM built on a newer Fedora records runtime requirements for the Qt, glibc, libstdc++, and other library symbols found on that build system. Older Fedora releases may not provide those exact symbols, even when the application source would compile and run there.
+
+For broad Fedora compatibility, publish one source RPM and rebuild it in each target Fedora chroot. Building on the oldest target can sometimes produce a binary that installs on newer releases, but the reliable RPM-native answer is still per-release binary RPMs.
 
 ## Build Dependencies
 
@@ -71,3 +75,32 @@ The results are written under:
 - Replace the `URL` and maintainer email in the spec before publishing.
 - Keep `License:` synchronized with the project `LICENSE` file.
 - The package does not set Linux capabilities on the installed binary. The current BlueZ DBus backend is designed to avoid the earlier QtBluetooth address-type capability issue.
+
+## Multi-Fedora Builds
+
+Use `mock` or a build service such as COPR/OBS to build the same SRPM once per target Fedora release. This keeps the spec package-name based while letting each Fedora release resolve the correct Qt and system library ABI requirements.
+
+Install the local tools:
+
+```sh
+sudo dnf install rpm-build rpmdevtools mock
+sudo usermod -aG mock "$USER"
+```
+
+Log out and back in after joining the `mock` group.
+
+Build for the default Fedora chroots listed in the helper:
+
+```sh
+./packaging/build-fedora-rpms.sh
+```
+
+Or choose explicit targets:
+
+```sh
+./packaging/build-fedora-rpms.sh packaging/artifacts fedora-42-x86_64 fedora-43-x86_64 fedora-44-x86_64
+```
+
+The results are written under `packaging/artifacts/<chroot>/`.
+
+For public distribution, prefer COPR or OBS over uploading one locally built binary RPM. They rebuild from the SRPM in clean target chroots and produce separate repositories per Fedora release.
