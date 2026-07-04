@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file alias="easyspot-linux-client.png">../assets/EasySpotWindows-7.png</file>
+    </qresource>
+</RCC>

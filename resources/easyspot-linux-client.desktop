@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=EasySpot Linux Client
+Comment=Control an Android EasySpot hotspot from KDE
+Exec=easyspot-linux-client
+Icon=easyspot-linux-client
+Terminal=false
+Categories=Network;Qt;

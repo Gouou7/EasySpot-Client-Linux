@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="windowTitle">
+   <string>EasySpot for Linux</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="mainLayout">
+    <item>
+     <widget class="QTabWidget" name="mainTabs">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="controlTab">
+       <attribute name="title">
+        <string>Control</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="controlLayout">
+        <item>
+         <widget class="QGroupBox" name="statusGroup">
+          <property name="title">
+           <string>Connection</string>
+          </property>
+          <layout class="QVBoxLayout" name="statusLayout">
+           <item>
+            <layout class="QGridLayout" name="statusHeaderLayout">
+             <item row="0" column="0" rowspan="2">
+              <widget class="QLabel" name="statusIconLabel">
+               <property name="minimumSize">
+                <size>
+                 <width>32</width>
+                 <height>32</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>32</width>
+                 <height>32</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="statusLabel">
+               <property name="text">
+                <string>Ready</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLabel" name="detailLabel">
+               <property name="text">
+                <string>Save the hotspot credentials, then choose an action.</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="Line" name="statusSeparator">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QGridLayout" name="stateSummaryLayout">
+             <item row="0" column="0">
+              <widget class="QLabel" name="currentSsidLabel">
+               <property name="text">
+                <string>Current Wi-Fi</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLabel" name="currentSsidValueLabel">
+               <property name="text">
+                <string>Not connected</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="targetSsidLabel">
+               <property name="text">
+                <string>Configured hotspot</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLabel" name="targetSsidValueLabel">
+               <property name="text">
+                <string>Not set</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="passwordSavedLabel">
+               <property name="text">
+                <string>Password storage</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLabel" name="passwordSavedValueLabel">
+               <property name="text">
+                <string>Not saved</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="actionsGroup">
+          <property name="title">
+           <string>Actions</string>
+          </property>
+          <layout class="QGridLayout" name="actionLayout">
+           <item row="0" column="0">
+            <widget class="QPushButton" name="turnOnButton">
+             <property name="text">
+              <string>Turn Hotspot ON</string>
+             </property>
+             <property name="default">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="connectButton">
+             <property name="text">
+              <string>Connect to Hotspot</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="turnOffButton">
+             <property name="text">
+              <string>Turn Hotspot OFF</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QPushButton" name="refreshStatusButton">
+             <property name="text">
+              <string>Refresh Status</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="credentialsGroup">
+          <property name="title">
+           <string>Hotspot credentials</string>
+          </property>
+          <layout class="QVBoxLayout" name="credentialsLayout">
+           <item>
+            <layout class="QHBoxLayout" name="credentialSummaryLayout">
+             <item>
+              <widget class="QLabel" name="credentialIconLabel">
+               <property name="minimumSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>24</width>
+                 <height>24</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="credentialSummaryLabel">
+               <property name="text">
+                <string>No hotspot SSID or password has been saved yet.</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="credentialsButtonLayout">
+             <item>
+              <widget class="QPushButton" name="editCredentialsButton">
+               <property name="text">
+                <string>Edit Credentials</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="clearCredentialsButton">
+               <property name="text">
+                <string>Clear</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="controlSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="settingsTab">
+       <attribute name="title">
+        <string>Settings</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="settingsLayout">
+        <item>
+         <widget class="QGroupBox" name="integrationGroup">
+          <property name="title">
+           <string>System integration</string>
+          </property>
+          <layout class="QGridLayout" name="integrationLayout">
+           <item row="0" column="0">
+            <widget class="QCheckBox" name="launchAtLoginCheck">
+             <property name="text">
+              <string>Launch at login</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QCheckBox" name="debugCheck">
+             <property name="text">
+              <string>Enable debug information</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="2">
+            <widget class="QLabel" name="launchAtLoginDescriptionLabel">
+             <property name="text">
+              <string>EasySpot starts in the system tray after login and keeps running when the window is closed.</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QPushButton" name="bluetoothSettingsButton">
+             <property name="text">
+              <string>Bluetooth Settings</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QPushButton" name="networkSettingsButton">
+             <property name="text">
+              <string>Network Settings</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="advancedGroup">
+          <property name="title">
+           <string>Advanced</string>
+          </property>
+          <layout class="QVBoxLayout" name="advancedOuterLayout">
+           <item>
+            <layout class="QFormLayout" name="advancedLayout">
+             <item row="0" column="0">
+              <widget class="QLabel" name="bleTimeoutLabel">
+               <property name="text">
+                <string>BLE scan timeout</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QComboBox" name="bleTimeoutCombo"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="bleTimeoutDescriptionLabel">
+             <property name="text">
+              <string>Increase this only if the phone is slow to appear during BLE scanning.</string>
+             </property>
+             <property name="wordWrap">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="debugGroup">
+          <property name="title">
+           <string>Debug information</string>
+          </property>
+          <property name="visible">
+           <bool>false</bool>
+          </property>
+          <layout class="QVBoxLayout" name="debugLayout">
+           <item>
+            <widget class="QPushButton" name="copyDebugButton">
+             <property name="text">
+              <string>Copy Debug Summary</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPlainTextEdit" name="debugText">
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="settingsSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="aboutTab">
+       <attribute name="title">
+        <string>About</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="aboutTabLayout">
+        <item>
+         <widget class="QGroupBox" name="aboutGroup">
+          <property name="title">
+           <string>EasySpot for Linux</string>
+          </property>
+          <layout class="QVBoxLayout" name="aboutLayout">
+           <item>
+            <layout class="QHBoxLayout" name="aboutHeaderLayout">
+             <item>
+              <widget class="QLabel" name="aboutIconLabel">
+               <property name="minimumSize">
+                <size>
+                 <width>48</width>
+                 <height>48</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>48</width>
+                 <height>48</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="aboutDescriptionLabel">
+               <property name="text">
+                <string>EasySpot controls an EasySpot Android hotspot over BLE, then connects KDE to the hotspot Wi-Fi network.</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="aboutVersionLabel">
+             <property name="text">
+              <string>Version: 0.1.0</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="aboutSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
