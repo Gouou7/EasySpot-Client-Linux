@@ -1,6 +1,9 @@
 # EasySpot Linux Client
 
-EasySpot Linux Client is a native Fedora/KDE desktop companion for the EasySpot Android hotspot service. It sends hotspot on/off commands to the Android service over BLE, then asks NetworkManager to connect Linux to the configured hotspot Wi-Fi network.
+
+<img src="assets/EasySpotWindows-7.png" alt="Mint Player logo" width="120">
+
+EasySpot Linux Client is a native Fedora/KDE desktop companion for the [EasySpot](https://github.com/EasySpotApp/EasySpot) Android hotspot service. It sends hotspot on/off commands to the Android service over BLE, then asks NetworkManager to connect Linux to the configured hotspot Wi-Fi network.
 
 The application uses standard Qt 6 Widgets and Qt Designer `.ui` files. It intentionally avoids custom stylesheets, custom painting, and hard-coded colors so KDE Breeze, the active Qt platform theme, fonts, icons, and light/dark mode remain in control.
 

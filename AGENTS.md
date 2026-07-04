@@ -1,6 +1,5 @@
 # AGENTS.md
 
-
 ## Project Overview
 
 - Native Fedora/KDE client for controlling an EasySpot Android hotspot.
